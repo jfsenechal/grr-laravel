@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 final class StatusCorrespondence extends Model
 {
+    public $timestamps = false;
+
     /** @var list<string> */
     protected $fillable = [
         'function_code',

@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Area extends Model
 {
+    public $timestamps = false;
+
     /** @var list<string> */
     protected $fillable = [
         'area_name',

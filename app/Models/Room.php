@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 final class Room extends Model
 {
+    public $timestamps = false;
+
     /** @var list<string> */
     protected $fillable = [
         'area_id',

@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 final class Site extends Model
 {
+    public $timestamps = false;
+
     /** @var list<string> */
     protected $fillable = [
         'site_code',
