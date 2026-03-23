@@ -11,8 +11,10 @@ return new class() extends Migration
     public function up(): void
     {
         Schema::create('group_site', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->foreignId('group_id')->constrained();
+            $table->foreignId('site_id')->constrained();
+
+            $table->primary(['group_id', 'site_id']);
         });
     }
 };

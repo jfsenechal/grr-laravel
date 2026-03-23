@@ -11,6 +11,7 @@ use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthenticationRecovery;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -65,6 +66,54 @@ final class User extends Authenticatable implements FilamentUser, HasAppAuthenti
         /** @phpstan-ignore-next-line  */
         $this->app_authentication_recovery_codes = $codes;
         $this->save();
+    }
+
+    /** @return BelongsToMany<Area, $this> */
+    public function areas(): BelongsToMany
+    {
+        return $this->belongsToMany(Area::class, 'area_user');
+    }
+
+    /** @return BelongsToMany<Area, $this> */
+    public function adminAreas(): BelongsToMany
+    {
+        return $this->belongsToMany(Area::class, 'area_user_admin');
+    }
+
+    /** @return BelongsToMany<Room, $this> */
+    public function rooms(): BelongsToMany
+    {
+        return $this->belongsToMany(Room::class, 'room_user');
+    }
+
+    /** @return BelongsToMany<Room, $this> */
+    public function bookingRooms(): BelongsToMany
+    {
+        return $this->belongsToMany(Room::class, 'booking_user_room');
+    }
+
+    /** @return BelongsToMany<Room, $this> */
+    public function mailRooms(): BelongsToMany
+    {
+        return $this->belongsToMany(Room::class, 'mail_user_room');
+    }
+
+    /** @return BelongsToMany<Site, $this> */
+    public function sites(): BelongsToMany
+    {
+        return $this->belongsToMany(Site::class, 'site_user');
+    }
+
+    /** @return BelongsToMany<Site, $this> */
+    public function adminSites(): BelongsToMany
+    {
+        return $this->belongsToMany(Site::class, 'site_user_admin');
+    }
+
+    /** @return BelongsToMany<Group, $this> */
+    public function groups(): BelongsToMany
+    {
+        return $this->belongsToMany(Group::class, 'group_user');
     }
 
     /**

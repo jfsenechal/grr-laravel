@@ -11,8 +11,10 @@ return new class() extends Migration
     public function up(): void
     {
         Schema::create('site_user_admin', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('site_id')->constrained();
+
+            $table->primary(['user_id', 'site_id']);
         });
     }
 };

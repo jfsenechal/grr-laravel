@@ -11,8 +11,10 @@ return new class() extends Migration
     public function up(): void
     {
         Schema::create('area_entry_type', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->foreignId('entry_type_id')->constrained();
+            $table->foreignId('area_id')->constrained();
+
+            $table->primary(['entry_type_id', 'area_id']);
         });
     }
 };

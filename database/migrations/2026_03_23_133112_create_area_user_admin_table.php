@@ -11,8 +11,10 @@ return new class() extends Migration
     public function up(): void
     {
         Schema::create('area_user_admin', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('area_id')->constrained();
+
+            $table->primary(['user_id', 'area_id']);
         });
     }
 };

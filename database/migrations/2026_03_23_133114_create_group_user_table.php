@@ -12,7 +12,10 @@ return new class() extends Migration
     {
         Schema::create('group_user', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('group_id')->constrained();
+
+            $table->unique(['user_id', 'group_id']);
         });
     }
 };
