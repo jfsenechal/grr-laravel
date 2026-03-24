@@ -1,3 +1,17 @@
+```bash       
+  php artisan tinker --execute "echo App\Models\User::first()->createToken('api')->plainTextToken;"
+```
+
+```bash                                                                                                                                            
+  php artisan tinker --execute "echo App\Models\User::first()->tokens()->count();"    
+```
+
+# Get authenticated user (requires a Sanctum token)
+
+curl http://localhost/api/user \
+-H "Authorization: Bearer YOUR_TOKEN_HERE" \
+-H "Accept: application/json"
+
 ### Login (get a token):
 
 curl -X POST http://localhost:8000/api/login \
