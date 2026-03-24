@@ -14,10 +14,10 @@ final class MailLog extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'sent_at',
-        'from',
-        'to',
-        'subject',
+        'date',
+        'de',
+        'a',
+        'sujet',
         'message',
     ];
 }

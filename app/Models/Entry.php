@@ -27,15 +27,15 @@ final class Entry extends Model
         'name',
         'type',
         'description',
-        'status_entry',
+        'statut_entry',
         'option_reservation',
         'overload_desc',
         'moderate',
-        'days',
-        'key',
-        'mail',
-        'max_participant_count',
-        'deleted',
+        'jours',
+        'clef',
+        'courrier',
+        'nbparticipantmax',
+        'supprimer',
     ];
 
     /** @return BelongsTo<Room, $this> */

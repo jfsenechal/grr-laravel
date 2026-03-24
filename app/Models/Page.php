@@ -14,20 +14,20 @@ final class Page extends Model
 
     protected $table = 'grr_page';
 
-    protected $primaryKey = 'slug';
+    protected $primaryKey = 'nom';
 
     protected $keyType = 'string';
 
     /** @var list<string> */
     protected $fillable = [
-        'slug',
-        'title',
-        'content',
-        'is_system',
-        'minimum_status',
-        'link',
-        'open_in_new_tab',
-        'sort_order',
-        'position',
+        'nom',
+        'titre',
+        'valeur',
+        'systeme',
+        'statutmini',
+        'lien',
+        'nouveauonglet',
+        'ordre',
+        'emplacement',
     ];
 }

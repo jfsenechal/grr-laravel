@@ -22,7 +22,7 @@ final class EntryResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'type' => $this->type,
-            'status_entry' => $this->status_entry,
+            'statut_entry' => $this->statut_entry,
             'beneficiaire' => $this->beneficiaire,
             'beneficiaire_ext' => $this->beneficiaire_ext,
             'create_by' => $this->create_by,

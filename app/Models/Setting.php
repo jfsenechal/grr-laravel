@@ -14,13 +14,13 @@ final class Setting extends Model
 
     protected $table = 'grr_setting';
 
-    protected $primaryKey = 'name';
+    protected $primaryKey = 'NAME';
 
     protected $keyType = 'string';
 
     /** @var list<string> */
     protected $fillable = [
-        'name',
-        'value',
+        'NAME',
+        'VALUE',
     ];
 }

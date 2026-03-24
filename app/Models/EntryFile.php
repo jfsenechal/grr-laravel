@@ -15,7 +15,7 @@ final class EntryFile extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'entry_id',
+        'id_entry',
         'file_name',
         'public_name',
     ];

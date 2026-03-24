@@ -15,13 +15,13 @@ final class OverloadField extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'area_id',
-        'field_name',
-        'field_type',
-        'field_list',
-        'required',
-        'display',
-        'confidential',
+        'id_area',
+        'fieldname',
+        'fieldtype',
+        'fieldlist',
+        'obligatoire',
+        'affichage',
+        'confidentiel',
         'overload_mail',
         'mail_spec',
     ];

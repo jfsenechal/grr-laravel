@@ -17,12 +17,12 @@ final class EntryType extends Model
     protected $fillable = [
         'type_name',
         'order_display',
-        'color',
-        'color_hex',
-        'text_color',
-        'icon_color',
+        'couleur',
+        'couleurhexa',
+        'couleurtexte',
+        'couleuricone',
         'type_letter',
-        'available',
+        'disponible',
     ];
 
     /** @return BelongsToMany<Area, $this> */

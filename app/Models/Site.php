@@ -15,16 +15,16 @@ final class Site extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'site_code',
-        'site_name',
+        'sitecode',
+        'sitename',
         'access',
-        'address_line1',
-        'address_line2',
-        'address_line3',
-        'postal_code',
-        'city',
-        'country',
-        'phone',
+        'adresse_ligne1',
+        'adresse_ligne2',
+        'adresse_ligne3',
+        'cp',
+        'ville',
+        'pays',
+        'tel',
         'fax',
     ];
 

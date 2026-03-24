@@ -13,9 +13,9 @@ final class Group extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'name',
+        'nom',
         'description',
-        'is_archived',
+        'archive',
     ];
 
     /** @return BelongsToMany<Area, $this> */

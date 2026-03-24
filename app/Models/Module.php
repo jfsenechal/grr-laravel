@@ -14,14 +14,14 @@ final class Module extends Model
 
     protected $table = 'grr_modulesext';
 
-    protected $primaryKey = 'name';
+    protected $primaryKey = 'nom';
 
     protected $keyType = 'string';
 
     /** @var list<string> */
     protected $fillable = [
-        'name',
-        'is_active',
+        'nom',
+        'actif',
         'version',
     ];
 }

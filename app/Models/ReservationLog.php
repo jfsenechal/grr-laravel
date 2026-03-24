@@ -14,10 +14,10 @@ final class ReservationLog extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'logged_at',
-        'entry_id',
-        'identifier',
+        'date',
+        'idresa',
+        'identifiant',
         'action',
-        'details',
+        'infoscomp',
     ];
 }

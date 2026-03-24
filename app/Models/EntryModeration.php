@@ -15,8 +15,8 @@ final class EntryModeration extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'moderator_login',
-        'moderation_motivation',
+        'login_moderateur',
+        'motivation_moderation',
         'start_time',
         'end_time',
         'entry_type',
@@ -28,7 +28,7 @@ final class EntryModeration extends Model
         'name',
         'type',
         'description',
-        'status_entry',
+        'statut_entry',
         'option_reservation',
         'overload_desc',
         'moderate',

@@ -14,7 +14,7 @@ final class CycleDay extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'day',
-        'label',
+        'DAY',
+        'Jours',
     ];
 }

@@ -14,8 +14,8 @@ final class StatusCorrespondence extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'function_code',
-        'function_label',
-        'grr_status',
+        'code_fonction',
+        'libelle_fonction',
+        'statut_grr',
     ];
 }

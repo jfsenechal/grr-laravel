@@ -14,6 +14,6 @@ final class Vacation extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'day',
+        'DAY',
     ];
 }

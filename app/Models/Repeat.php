@@ -30,9 +30,9 @@ final class Repeat extends Model
         'description',
         'rep_num_weeks',
         'overload_desc',
-        'days',
-        'mail',
-        'max_participant_count',
+        'jours',
+        'courrier',
+        'nbparticipantmax',
     ];
 
     /** @return BelongsTo<Room, $this> */

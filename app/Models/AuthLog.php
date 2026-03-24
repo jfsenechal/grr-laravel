@@ -14,14 +14,14 @@ final class AuthLog extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'login',
-        'start',
-        'session_id',
-        'remote_addr',
-        'user_agent',
-        'referer',
-        'autoclose',
-        'end',
+        'LOGIN',
+        'START',
+        'SESSION_ID',
+        'REMOTE_ADDR',
+        'USER_AGENT',
+        'REFERER',
+        'AUTOCLOSE',
+        'END',
     ];
 
     /**
@@ -32,8 +32,8 @@ final class AuthLog extends Model
     protected function casts(): array
     {
         return [
-            'start' => 'datetime',
-            'end' => 'datetime',
+            'START' => 'datetime',
+            'END' => 'datetime',
         ];
     }
 }

@@ -15,8 +15,8 @@ final class Participant extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'entry_id',
-        'created_by',
+        'idresa',
+        'cree_par',
         'beneficiaire',
         'beneficiaire_ext',
         'moderation',

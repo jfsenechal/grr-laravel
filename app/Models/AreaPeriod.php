@@ -15,9 +15,9 @@ final class AreaPeriod extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'area_id',
-        'period_number',
-        'period_name',
+        'id_area',
+        'num_periode',
+        'nom_periode',
     ];
 
     /** @return BelongsTo<Area, $this> */

@@ -12,16 +12,16 @@ final class UserRequest extends Model
 
     /** @var list<string> */
     protected $fillable = [
-        'last_name',
-        'first_name',
+        'nom',
+        'prenom',
         'email',
-        'phone',
-        'password',
-        'comment',
-        'requested_at',
-        'status',
-        'manager',
-        'decided_at',
+        'telephone',
+        'mdp',
+        'commentaire',
+        'datedemande',
+        'etat',
+        'gestionnaire',
+        'datechoix',
     ];
 
     /**
@@ -32,9 +32,9 @@ final class UserRequest extends Model
     protected function casts(): array
     {
         return [
-            'requested_at' => 'date',
-            'decided_at' => 'date',
-            'password' => 'hashed',
+            'datedemande' => 'date',
+            'datechoix' => 'date',
+            'mdp' => 'hashed',
         ];
     }
 }
