@@ -12,6 +12,8 @@ final class Area extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_area';
+
     /** @var list<string> */
     protected $fillable = [
         'area_name',
@@ -39,7 +41,7 @@ final class Area extends Model
     /** @return BelongsToMany<Site, $this> */
     public function sites(): BelongsToMany
     {
-        return $this->belongsToMany(Site::class, 'area_site');
+        return $this->belongsToMany(Site::class, 'grr_j_site_area');
     }
 
     /** @return HasMany<Room, $this> */
@@ -63,24 +65,24 @@ final class Area extends Model
     /** @return BelongsToMany<Group, $this> */
     public function groups(): BelongsToMany
     {
-        return $this->belongsToMany(Group::class, 'area_group');
+        return $this->belongsToMany(Group::class, 'grr_j_group_area');
     }
 
     /** @return BelongsToMany<User, $this> */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'area_user');
+        return $this->belongsToMany(User::class, 'grr_j_user_area');
     }
 
     /** @return BelongsToMany<User, $this> */
     public function adminUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'area_user_admin');
+        return $this->belongsToMany(User::class, 'grr_j_useradmin_area');
     }
 
     /** @return BelongsToMany<EntryType, $this> */
     public function entryTypes(): BelongsToMany
     {
-        return $this->belongsToMany(EntryType::class, 'area_entry_type');
+        return $this->belongsToMany(EntryType::class, 'grr_j_type_area');
     }
 }

@@ -10,6 +10,8 @@ final class AuthLog extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_log';
+
     /** @var list<string> */
     protected $fillable = [
         'login',

@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('participants', function (Blueprint $table) {
+        if (Schema::hasTable('grr_participants')) {
+            return;
+        }
+        Schema::create('grr_participants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('entry_id')->constrained();
+            $table->foreignId('entry_id')->constrained('grr_entry');
             $table->timestamp('timestamp')->useCurrent()->useCurrentOnUpdate();
             $table->string('created_by', 200)->default('');
             $table->string('beneficiaire', 190)->default('');

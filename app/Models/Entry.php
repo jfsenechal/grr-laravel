@@ -12,6 +12,8 @@ final class Entry extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_entry';
+
     /** @var list<string> */
     protected $fillable = [
         'start_time',

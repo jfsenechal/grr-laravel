@@ -10,6 +10,8 @@ final class Vacation extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_calendrier_vacances';
+
     /** @var list<string> */
     protected $fillable = [
         'day',

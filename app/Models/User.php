@@ -72,49 +72,49 @@ final class User extends Authenticatable implements FilamentUser, HasAppAuthenti
     /** @return BelongsToMany<Area, $this> */
     public function areas(): BelongsToMany
     {
-        return $this->belongsToMany(Area::class, 'area_user');
+        return $this->belongsToMany(Area::class, 'grr_j_user_area');
     }
 
     /** @return BelongsToMany<Area, $this> */
     public function adminAreas(): BelongsToMany
     {
-        return $this->belongsToMany(Area::class, 'area_user_admin');
+        return $this->belongsToMany(Area::class, 'grr_j_useradmin_area');
     }
 
     /** @return BelongsToMany<Room, $this> */
     public function rooms(): BelongsToMany
     {
-        return $this->belongsToMany(Room::class, 'room_user');
+        return $this->belongsToMany(Room::class, 'grr_j_user_room');
     }
 
     /** @return BelongsToMany<Room, $this> */
     public function bookingRooms(): BelongsToMany
     {
-        return $this->belongsToMany(Room::class, 'booking_user_room');
+        return $this->belongsToMany(Room::class, 'grr_j_userbook_room');
     }
 
     /** @return BelongsToMany<Room, $this> */
     public function mailRooms(): BelongsToMany
     {
-        return $this->belongsToMany(Room::class, 'mail_user_room');
+        return $this->belongsToMany(Room::class, 'grr_j_mailuser_room');
     }
 
     /** @return BelongsToMany<Site, $this> */
     public function sites(): BelongsToMany
     {
-        return $this->belongsToMany(Site::class, 'site_user');
+        return $this->belongsToMany(Site::class, 'grr_j_user_site');
     }
 
     /** @return BelongsToMany<Site, $this> */
     public function adminSites(): BelongsToMany
     {
-        return $this->belongsToMany(Site::class, 'site_user_admin');
+        return $this->belongsToMany(Site::class, 'grr_j_useradmin_site');
     }
 
     /** @return BelongsToMany<Group, $this> */
     public function groups(): BelongsToMany
     {
-        return $this->belongsToMany(Group::class, 'group_user');
+        return $this->belongsToMany(Group::class, 'grr_utilisateurs_groupes');
     }
 
     /**

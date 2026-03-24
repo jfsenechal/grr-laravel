@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('reservation_logs', function (Blueprint $table) {
+        if (Schema::hasTable('grr_log_resa')) {
+            return;
+        }
+        Schema::create('grr_log_resa', function (Blueprint $table) {
             $table->id();
             $table->integer('logged_at');
             $table->integer('entry_id');

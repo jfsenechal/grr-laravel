@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('entry_types', function (Blueprint $table) {
+        if (Schema::hasTable('grr_type_area')) {
+            return;
+        }
+        Schema::create('grr_type_area', function (Blueprint $table) {
             $table->id();
             $table->string('type_name', 30)->default('');
             $table->smallInteger('order_display')->default(0);

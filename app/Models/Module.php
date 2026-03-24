@@ -12,6 +12,8 @@ final class Module extends Model
 
     public $incrementing = false;
 
+    protected $table = 'grr_modulesext';
+
     protected $primaryKey = 'name';
 
     protected $keyType = 'string';

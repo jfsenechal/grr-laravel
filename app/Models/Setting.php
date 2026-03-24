@@ -12,6 +12,8 @@ final class Setting extends Model
 
     public $incrementing = false;
 
+    protected $table = 'grr_setting';
+
     protected $primaryKey = 'name';
 
     protected $keyType = 'string';

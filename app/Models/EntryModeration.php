@@ -11,6 +11,8 @@ final class EntryModeration extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_entry_moderate';
+
     /** @var list<string> */
     protected $fillable = [
         'moderator_login',

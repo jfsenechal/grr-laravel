@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('area_entry_type', function (Blueprint $table) {
-            $table->foreignId('entry_type_id')->constrained();
-            $table->foreignId('area_id')->constrained();
+        if (Schema::hasTable('grr_j_type_area')) {
+            return;
+        }
+        Schema::create('grr_j_type_area', function (Blueprint $table) {
+            $table->foreignId('entry_type_id')->constrained('grr_type_area');
+            $table->foreignId('area_id')->constrained('grr_area');
 
             $table->primary(['entry_type_id', 'area_id']);
         });

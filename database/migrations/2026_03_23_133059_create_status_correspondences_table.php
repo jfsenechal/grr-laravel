@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('status_correspondences', function (Blueprint $table) {
+        if (Schema::hasTable('grr_correspondance_statut')) {
+            return;
+        }
+        Schema::create('grr_correspondance_statut', function (Blueprint $table) {
             $table->id();
             $table->string('function_code', 30);
             $table->string('function_label', 200);

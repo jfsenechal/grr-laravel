@@ -11,6 +11,8 @@ final class EntryType extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_type_area';
+
     /** @var list<string> */
     protected $fillable = [
         'type_name',
@@ -26,6 +28,6 @@ final class EntryType extends Model
     /** @return BelongsToMany<Area, $this> */
     public function areas(): BelongsToMany
     {
-        return $this->belongsToMany(Area::class, 'area_entry_type');
+        return $this->belongsToMany(Area::class, 'grr_j_type_area');
     }
 }

@@ -10,6 +10,8 @@ final class StatusCorrespondence extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_correspondance_statut';
+
     /** @var list<string> */
     protected $fillable = [
         'function_code',

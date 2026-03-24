@@ -12,6 +12,8 @@ final class Page extends Model
 
     public $incrementing = false;
 
+    protected $table = 'grr_page';
+
     protected $primaryKey = 'slug';
 
     protected $keyType = 'string';

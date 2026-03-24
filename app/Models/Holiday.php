@@ -10,6 +10,8 @@ final class Holiday extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_calendrier_feries';
+
     /** @var list<string> */
     protected $fillable = [
         'day',

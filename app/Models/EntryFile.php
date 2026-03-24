@@ -11,6 +11,8 @@ final class EntryFile extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_files';
+
     /** @var list<string> */
     protected $fillable = [
         'entry_id',

@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('overload_fields', function (Blueprint $table) {
+        if (Schema::hasTable('grr_overload')) {
+            return;
+        }
+        Schema::create('grr_overload', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('area_id')->constrained();
+            $table->foreignId('area_id')->constrained('grr_area');
             $table->string('field_name', 55)->default('');
             $table->string('field_type', 25)->default('');
             $table->text('field_list');

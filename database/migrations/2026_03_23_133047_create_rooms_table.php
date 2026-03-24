@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        if (Schema::hasTable('grr_room')) {
+            return;
+        }
+        Schema::create('grr_room', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('area_id')->constrained();
+            $table->foreignId('area_id')->constrained('grr_area');
             $table->string('room_name', 60)->default('');
             $table->string('description', 60)->default('');
             $table->integer('capacity')->default(0);

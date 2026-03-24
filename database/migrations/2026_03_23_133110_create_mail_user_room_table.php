@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('mail_user_room', function (Blueprint $table) {
+        if (Schema::hasTable('grr_j_mailuser_room')) {
+            return;
+        }
+        Schema::create('grr_j_mailuser_room', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->constrained('grr_room');
             $table->boolean('mail_resa')->default(true);
             $table->boolean('mail_hebdo')->default(false);
 

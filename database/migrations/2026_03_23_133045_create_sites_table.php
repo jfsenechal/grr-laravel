@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('sites', function (Blueprint $table) {
+        if (Schema::hasTable('grr_site')) {
+            return;
+        }
+        Schema::create('grr_site', function (Blueprint $table) {
             $table->id();
             $table->string('site_code', 10)->unique()->nullable();
             $table->string('site_name', 50)->unique()->default('');

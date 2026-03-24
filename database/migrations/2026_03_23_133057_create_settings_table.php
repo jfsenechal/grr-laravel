@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
+        if (Schema::hasTable('grr_setting')) {
+            return;
+        }
+        Schema::create('grr_setting', function (Blueprint $table) {
             $table->string('name', 32)->primary();
             $table->text('value');
         });

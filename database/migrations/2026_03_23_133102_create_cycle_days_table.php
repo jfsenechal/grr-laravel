@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('cycle_days', function (Blueprint $table) {
+        if (Schema::hasTable('grr_calendrier_jours_cycle')) {
+            return;
+        }
+        Schema::create('grr_calendrier_jours_cycle', function (Blueprint $table) {
             $table->integer('day');
             $table->string('label', 20)->default('');
         });

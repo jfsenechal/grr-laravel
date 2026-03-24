@@ -10,6 +10,8 @@ final class CalendarDay extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_calendar';
+
     /** @var list<string> */
     protected $fillable = [
         'day',

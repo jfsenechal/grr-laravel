@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('areas', function (Blueprint $table) {
+        if (Schema::hasTable('grr_area')) {
+            return;
+        }
+        Schema::create('grr_area', function (Blueprint $table) {
             $table->id();
             $table->string('area_name', 30)->default('');
             $table->char('access', 1)->default('');

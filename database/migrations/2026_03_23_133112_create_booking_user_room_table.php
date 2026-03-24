@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('booking_user_room', function (Blueprint $table) {
+        if (Schema::hasTable('grr_j_userbook_room')) {
+            return;
+        }
+        Schema::create('grr_j_userbook_room', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->constrained('grr_room');
 
             $table->primary(['user_id', 'room_id']);
         });

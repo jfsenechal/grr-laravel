@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('auth_logs', function (Blueprint $table) {
+        if (Schema::hasTable('grr_log')) {
+            return;
+        }
+        Schema::create('grr_log', function (Blueprint $table) {
             $table->string('login', 190);
             $table->dateTime('start');
             $table->string('session_id', 64);

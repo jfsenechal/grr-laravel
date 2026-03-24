@@ -11,6 +11,8 @@ final class Site extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_site';
+
     /** @var list<string> */
     protected $fillable = [
         'site_code',
@@ -29,24 +31,24 @@ final class Site extends Model
     /** @return BelongsToMany<Area, $this> */
     public function areas(): BelongsToMany
     {
-        return $this->belongsToMany(Area::class, 'area_site');
+        return $this->belongsToMany(Area::class, 'grr_j_site_area');
     }
 
     /** @return BelongsToMany<User, $this> */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'site_user');
+        return $this->belongsToMany(User::class, 'grr_j_user_site');
     }
 
     /** @return BelongsToMany<Group, $this> */
     public function groups(): BelongsToMany
     {
-        return $this->belongsToMany(Group::class, 'group_site');
+        return $this->belongsToMany(Group::class, 'grr_j_group_site');
     }
 
     /** @return BelongsToMany<User, $this> */
     public function adminUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'site_user_admin');
+        return $this->belongsToMany(User::class, 'grr_j_useradmin_site');
     }
 }

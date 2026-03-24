@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('mail_logs', function (Blueprint $table) {
+        if (Schema::hasTable('grr_log_mail')) {
+            return;
+        }
+        Schema::create('grr_log_mail', function (Blueprint $table) {
             $table->id();
             $table->integer('sent_at');
             $table->string('from', 255);

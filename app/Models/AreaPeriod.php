@@ -11,6 +11,8 @@ final class AreaPeriod extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_area_periodes';
+
     /** @var list<string> */
     protected $fillable = [
         'area_id',

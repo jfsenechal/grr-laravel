@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('modules', function (Blueprint $table) {
+        if (Schema::hasTable('grr_modulesext')) {
+            return;
+        }
+        Schema::create('grr_modulesext', function (Blueprint $table) {
             $table->string('name', 50)->primary();
             $table->boolean('is_active')->default(false);
             $table->integer('version');

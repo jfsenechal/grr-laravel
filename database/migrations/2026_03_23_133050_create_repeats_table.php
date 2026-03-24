@@ -10,14 +10,17 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('repeats', function (Blueprint $table) {
+        if (Schema::hasTable('grr_repeat')) {
+            return;
+        }
+        Schema::create('grr_repeat', function (Blueprint $table) {
             $table->id();
             $table->integer('start_time')->default(0);
             $table->integer('end_time')->default(0);
             $table->integer('rep_type')->default(0);
             $table->integer('end_date')->default(0);
             $table->string('rep_opt', 32)->default('');
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->constrained('grr_room');
             $table->timestamp('timestamp')->useCurrent()->useCurrentOnUpdate();
             $table->string('create_by', 190)->default('');
             $table->string('beneficiaire_ext', 200)->default('');

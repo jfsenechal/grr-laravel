@@ -10,6 +10,8 @@ final class CycleDay extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_calendrier_jours_cycle';
+
     /** @var list<string> */
     protected $fillable = [
         'day',

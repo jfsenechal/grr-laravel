@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        if (Schema::hasTable('grr_page')) {
+            return;
+        }
+        Schema::create('grr_page', function (Blueprint $table) {
             $table->string('slug', 30)->primary();
             $table->string('title', 255)->default('');
             $table->longText('content');

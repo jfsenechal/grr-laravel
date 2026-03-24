@@ -13,6 +13,8 @@ final class Room extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_room';
+
     /** @var list<string> */
     protected $fillable = [
         'area_id',
@@ -60,18 +62,18 @@ final class Room extends Model
     /** @return BelongsToMany<User, $this> */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'room_user');
+        return $this->belongsToMany(User::class, 'grr_j_user_room');
     }
 
     /** @return BelongsToMany<User, $this> */
     public function bookingUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'booking_user_room');
+        return $this->belongsToMany(User::class, 'grr_j_userbook_room');
     }
 
     /** @return BelongsToMany<User, $this> */
     public function mailUsers(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'mail_user_room');
+        return $this->belongsToMany(User::class, 'grr_j_mailuser_room');
     }
 }

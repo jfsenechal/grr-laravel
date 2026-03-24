@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 final class UserRequest extends Model
 {
+    protected $table = 'grr_utilisateurs_demandes';
+
     /** @var list<string> */
     protected $fillable = [
         'last_name',

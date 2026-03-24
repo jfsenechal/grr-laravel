@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('user_requests', function (Blueprint $table) {
+        if (Schema::hasTable('grr_utilisateurs_demandes')) {
+            return;
+        }
+        Schema::create('grr_utilisateurs_demandes', function (Blueprint $table) {
             $table->id();
             $table->string('last_name', 30);
             $table->string('first_name', 30);

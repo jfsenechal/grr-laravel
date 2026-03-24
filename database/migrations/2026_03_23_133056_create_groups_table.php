@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('groups', function (Blueprint $table) {
+        if (Schema::hasTable('grr_groupes')) {
+            return;
+        }
+        Schema::create('grr_groupes', function (Blueprint $table) {
             $table->id();
             $table->string('name', 120);
             $table->text('description');

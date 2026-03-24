@@ -10,6 +10,8 @@ final class MailLog extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_log_mail';
+
     /** @var list<string> */
     protected $fillable = [
         'sent_at',

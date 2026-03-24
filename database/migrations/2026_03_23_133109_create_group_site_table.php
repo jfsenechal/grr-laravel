@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('group_site', function (Blueprint $table) {
-            $table->foreignId('group_id')->constrained();
-            $table->foreignId('site_id')->constrained();
+        if (Schema::hasTable('grr_j_group_site')) {
+            return;
+        }
+        Schema::create('grr_j_group_site', function (Blueprint $table) {
+            $table->foreignId('group_id')->constrained('grr_groupes');
+            $table->foreignId('site_id')->constrained('grr_site');
 
             $table->primary(['group_id', 'site_id']);
         });

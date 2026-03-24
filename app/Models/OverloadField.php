@@ -11,6 +11,8 @@ final class OverloadField extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_overload';
+
     /** @var list<string> */
     protected $fillable = [
         'area_id',

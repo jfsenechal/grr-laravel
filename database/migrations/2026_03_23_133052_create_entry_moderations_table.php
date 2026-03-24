@@ -10,7 +10,10 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('entry_moderations', function (Blueprint $table) {
+        if (Schema::hasTable('grr_entry_moderate')) {
+            return;
+        }
+        Schema::create('grr_entry_moderate', function (Blueprint $table) {
             $table->id();
             $table->string('moderator_login', 40)->default('');
             $table->text('moderation_motivation');
@@ -18,7 +21,7 @@ return new class() extends Migration
             $table->integer('end_time')->default(0);
             $table->integer('entry_type')->default(0);
             $table->integer('repeat_id')->default(0);
-            $table->foreignId('room_id')->constrained();
+            $table->foreignId('room_id')->constrained('grr_room');
             $table->timestamp('timestamp')->useCurrent()->useCurrentOnUpdate();
             $table->string('create_by', 190)->default('');
             $table->string('beneficiaire_ext', 200)->default('');

@@ -10,10 +10,13 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('group_user', function (Blueprint $table) {
+        if (Schema::hasTable('grr_utilisateurs_groupes')) {
+            return;
+        }
+        Schema::create('grr_utilisateurs_groupes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('group_id')->constrained();
+            $table->foreignId('group_id')->constrained('grr_groupes');
 
             $table->unique(['user_id', 'group_id']);
         });

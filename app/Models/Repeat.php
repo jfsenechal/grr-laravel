@@ -12,6 +12,8 @@ final class Repeat extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_repeat';
+
     /** @var list<string> */
     protected $fillable = [
         'start_time',

@@ -11,6 +11,8 @@ final class Participant extends Model
 {
     public $timestamps = false;
 
+    protected $table = 'grr_participants';
+
     /** @var list<string> */
     protected $fillable = [
         'entry_id',

@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('area_user', function (Blueprint $table) {
+        if (Schema::hasTable('grr_j_user_area')) {
+            return;
+        }
+        Schema::create('grr_j_user_area', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('area_id')->constrained();
+            $table->foreignId('area_id')->constrained('grr_area');
             $table->unsignedBigInteger('group_id')->default(0);
 
             $table->primary(['user_id', 'area_id', 'group_id']);

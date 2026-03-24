@@ -10,9 +10,12 @@ return new class() extends Migration
 {
     public function up(): void
     {
-        Schema::create('entry_files', function (Blueprint $table) {
+        if (Schema::hasTable('grr_files')) {
+            return;
+        }
+        Schema::create('grr_files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('entry_id')->nullable()->constrained();
+            $table->foreignId('entry_id')->nullable()->constrained('grr_entry');
             $table->string('file_name', 50)->nullable();
             $table->string('public_name', 50)->nullable();
         });
