@@ -27,15 +27,15 @@ return new class() extends Migration
             $table->string('name', 80)->default('');
             $table->char('type', 2)->default('A');
             $table->text('description')->nullable();
-            $table->char('status_entry', 1)->default('-');
+            $table->char('statut_entry', 1)->default('-');
             $table->integer('option_reservation')->default(0);
             $table->text('overload_desc')->nullable();
             $table->tinyInteger('moderate')->default(0);
-            $table->tinyInteger('days')->default(0);
-            $table->tinyInteger('key')->default(0);
-            $table->tinyInteger('mail')->default(0);
-            $table->integer('max_participant_count')->default(0);
-            $table->tinyInteger('deleted')->default(0);
+            $table->tinyInteger('jours')->default(0);
+            $table->tinyInteger('clef')->default(0);
+            $table->tinyInteger('courrier')->default(0);
+            $table->integer('nbparticipantmax')->default(0);
+            $table->tinyInteger('supprimer')->default(0);
 
             $table->index('start_time');
             $table->index('end_time');

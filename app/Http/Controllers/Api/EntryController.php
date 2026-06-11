@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\StoreEntryRequest;
 use App\Http\Resources\EntryResource;
 use App\Models\Entry;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -42,5 +44,19 @@ final class EntryController extends Controller
             ->paginate();
 
         return EntryResource::collection($entries);
+    }
+
+    public function store(StoreEntryRequest $request): JsonResponse
+    {
+        $entry = Entry::query()->create([
+            ...$request->validated(),
+            'create_by' => $request->user()->name,
+        ]);
+
+        $entry->load('room');
+
+        return (new EntryResource($entry))
+            ->response()
+            ->setStatusCode(201);
     }
 }

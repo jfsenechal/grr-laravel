@@ -11,7 +11,7 @@ use Laravel\Sanctum\Sanctum;
 it('returns 401 without a token', function () {
     auth()->forgetGuards();
 
-    $this->getJson('/api/entries')
+    $this->getJson('/esquare/entries')
         ->assertUnauthorized();
 });
 
@@ -27,7 +27,7 @@ it('returns entries with a valid token', function () {
 
     Sanctum::actingAs(User::factory()->create());
 
-    $this->getJson('/api/entries')
+    $this->getJson('/esquare/entries')
         ->assertOk()
         ->assertJsonCount(1, 'data')
         ->assertJsonPath('data.0.name', 'Test Entry');
@@ -44,7 +44,7 @@ it('filters entries by area', function () {
 
     Sanctum::actingAs(User::factory()->create());
 
-    $this->getJson('/api/entries?area_id='.$area1->id)
+    $this->getJson('/esquare/entries?area_id='.$area1->id)
         ->assertOk()
         ->assertJsonCount(1, 'data')
         ->assertJsonPath('data.0.name', 'In Area 1');
@@ -60,7 +60,7 @@ it('filters entries by room', function () {
 
     Sanctum::actingAs(User::factory()->create());
 
-    $this->getJson('/api/entries?room_id='.$room1->id)
+    $this->getJson('/esquare/entries?room_id='.$room1->id)
         ->assertOk()
         ->assertJsonCount(1, 'data')
         ->assertJsonPath('data.0.name', 'Room 1 Entry');
@@ -91,8 +91,73 @@ it('filters entries by date range', function () {
 
     Sanctum::actingAs(User::factory()->create());
 
-    $this->getJson('/api/entries?start_date=2026-03-24&end_date=2026-03-26')
+    $this->getJson('/esquare/entries?start_date=2026-03-24&end_date=2026-03-26')
         ->assertOk()
         ->assertJsonCount(1, 'data')
         ->assertJsonPath('data.0.name', 'In range');
+});
+
+it('requires a token to create an entry', function () {
+    auth()->forgetGuards();
+
+    $this->postJson('/esquare/entries', [])
+        ->assertUnauthorized();
+});
+
+it('creates an entry with a valid token', function () {
+    $area = Area::query()->create(['area_name' => 'Area']);
+    $room = Room::query()->create(['area_id' => $area->id, 'room_name' => 'Room', 'comment_room' => '']);
+
+    Sanctum::actingAs(User::factory()->create(['name' => 'Jane Doe']));
+
+    $this->postJson('/esquare/entries', [
+        'room_id' => $room->id,
+        'name' => 'New Meeting',
+        'start_time' => strtotime('2026-03-23 08:00'),
+        'end_time' => strtotime('2026-03-23 09:00'),
+        'description' => 'Weekly sync',
+    ])
+        ->assertCreated()
+        ->assertJsonPath('data.name', 'New Meeting')
+        ->assertJsonPath('data.create_by', 'Jane Doe')
+        ->assertJsonPath('data.room.id', $room->id);
+
+    expect(Entry::query()->where('name', 'New Meeting')->exists())->toBeTrue();
+});
+
+it('validates required fields when creating an entry', function () {
+    Sanctum::actingAs(User::factory()->create());
+
+    $this->postJson('/esquare/entries', [])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['room_id', 'name', 'start_time', 'end_time']);
+});
+
+it('rejects an end time before the start time', function () {
+    $area = Area::query()->create(['area_name' => 'Area']);
+    $room = Room::query()->create(['area_id' => $area->id, 'room_name' => 'Room', 'comment_room' => '']);
+
+    Sanctum::actingAs(User::factory()->create());
+
+    $this->postJson('/esquare/entries', [
+        'room_id' => $room->id,
+        'name' => 'Invalid',
+        'start_time' => 2000,
+        'end_time' => 1000,
+    ])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['end_time']);
+});
+
+it('rejects an unknown room', function () {
+    Sanctum::actingAs(User::factory()->create());
+
+    $this->postJson('/esquare/entries', [
+        'room_id' => 9999,
+        'name' => 'Ghost room',
+        'start_time' => 1000,
+        'end_time' => 2000,
+    ])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrors(['room_id']);
 });
