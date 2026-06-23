@@ -1,0 +1,36 @@
+ ▐▛███▜▌   Claude Code v2.1.175
+▝▜█████▛▘  Opus 4.8 · Claude Pro
+  ▘▘ ▝▝    /var/www/grr-laravel
+
+ ▎ Meet Fable 5, our newest model for complex, long-running work. Switch anytime with /model.
+ ▎ Included in your plan limits until Jun 22, then switch to usage credits to continue.
+   +1 more · /status
+
+❯ remind me all the end points of api                                           
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● Here are all your API endpoints (defined in routes/api.php, prefixed with
+  esquare/):
+
+  ┌────────┬─────────────────┬───────────────────────────┬──────────────────┐
+  │ Method │    Endpoint     │          Handler          │     Purpose      │
+  ├────────┼─────────────────┼───────────────────────────┼──────────────────┤
+  │ POST   │ esquare/login   │ Api\AuthController@login  │ Authenticate /   │
+  │        │                 │                           │ get token        │
+  ├────────┼─────────────────┼───────────────────────────┼──────────────────┤
+  │ POST   │ esquare/logout  │ Api\AuthController@logout │ Revoke token     │
+  ├────────┼─────────────────┼───────────────────────────┼──────────────────┤
+  │        │                 │ closure                   │ Current          │
+  │ GET    │ esquare/user    │ (routes/api.php:13)       │ authenticated    │
+  │        │                 │                           │ user             │
+  ├────────┼─────────────────┼───────────────────────────┼──────────────────┤
+  │ GET    │ esquare/entries │ Api\EntryController@index │ List entries     │
+  ├────────┼─────────────────┼───────────────────────────┼──────────────────┤
+  │ POST   │ esquare/entries │ Api\EntryController@store │ Create an entry  │
+  └────────┴─────────────────┴───────────────────────────┴──────────────────┘
+
+  Want me to show the route file with the middleware/auth groups so you can see
+  which ones require a Sanctum token?
+
+✻ Brewed for 14s
