@@ -23,7 +23,6 @@ final class StoreEntryRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'start_time' => ['required', 'integer', 'min:0'],
             'end_time' => ['required', 'integer', 'gt:start_time'],
-            'entry_type' => ['sometimes', 'integer', 'exists:grr_type_area,id'],
             'type' => ['sometimes', 'string', 'max:1'],
             'statut_entry' => ['sometimes', 'string', 'max:1'],
             'description' => ['sometimes', 'nullable', 'string'],

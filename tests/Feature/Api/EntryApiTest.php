@@ -141,6 +141,27 @@ it('defaults repeat_id to 0 when creating an entry', function () {
     expect(Entry::query()->where('name', 'No repeat')->value('repeat_id'))->toBe(0);
 });
 
+it('always stores entry_type as 0 and ignores a client supplied value', function () {
+    $area = Area::query()->create(['area_name' => 'Area']);
+    $room = Room::query()->create(['area_id' => $area->id, 'room_name' => 'Room', 'comment_room' => '']);
+
+    Sanctum::actingAs(User::factory()->create());
+
+    $this->postJson('/esquare/entries', [
+        'room_id' => $room->id,
+        'name' => 'Not a series',
+        'start_time' => 1000,
+        'end_time' => 2000,
+        'type' => 'C',
+        'entry_type' => 1,
+    ])->assertCreated();
+
+    $entry = Entry::query()->where('name', 'Not a series')->sole();
+
+    expect($entry->entry_type)->toBe(0)
+        ->and($entry->type)->toBe('C');
+});
+
 it('validates required fields when creating an entry', function () {
     Sanctum::actingAs(User::factory()->create());
 

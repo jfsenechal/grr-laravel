@@ -38,8 +38,15 @@ final class Entry extends Model
         'supprimer',
     ];
 
-    /** @var array<string, mixed> */
+    /**
+     * `entry_type` is the periodicity flag read by legacy GRR: 0 = single booking,
+     * 1 = belongs to a series (`repeat_id`), 2 = detached from a series. It is not
+     * a `grr_type_area` reference — the booking category lives in `type`.
+     *
+     * @var array<string, mixed>
+     */
     protected $attributes = [
+        'entry_type' => 0,
         'repeat_id' => 0,
     ];
 
