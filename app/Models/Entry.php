@@ -38,6 +38,11 @@ final class Entry extends Model
         'supprimer',
     ];
 
+    /** @var array<string, mixed> */
+    protected $attributes = [
+        'repeat_id' => 0,
+    ];
+
     /** @return BelongsTo<Room, $this> */
     public function room(): BelongsTo
     {

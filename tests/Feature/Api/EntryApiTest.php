@@ -125,6 +125,22 @@ it('creates an entry with a valid token', function () {
     expect(Entry::query()->where('name', 'New Meeting')->exists())->toBeTrue();
 });
 
+it('defaults repeat_id to 0 when creating an entry', function () {
+    $area = Area::query()->create(['area_name' => 'Area']);
+    $room = Room::query()->create(['area_id' => $area->id, 'room_name' => 'Room', 'comment_room' => '']);
+
+    Sanctum::actingAs(User::factory()->create());
+
+    $this->postJson('/esquare/entries', [
+        'room_id' => $room->id,
+        'name' => 'No repeat',
+        'start_time' => 1000,
+        'end_time' => 2000,
+    ])->assertCreated();
+
+    expect(Entry::query()->where('name', 'No repeat')->value('repeat_id'))->toBe(0);
+});
+
 it('validates required fields when creating an entry', function () {
     Sanctum::actingAs(User::factory()->create());
 
