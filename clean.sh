@@ -9,3 +9,6 @@ php artisan config:clear --silent
 php artisan optimize:clear --silent
 php artisan filament:optimize-clear --silent
 rm -f storage/logs/*.log
+chown root:root ./ -R
+chown www-data:www-data storage/ -R
+chown www-data:www-data bootstrap/cache/ -R
