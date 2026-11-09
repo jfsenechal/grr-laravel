@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\Console\LdapDirectory;
+use App\Console\UserDirectory;
 use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Placeholder;
 use Filament\Infolists\Components\Entry;
@@ -18,7 +20,7 @@ final class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        //
+        $this->app->bind(UserDirectory::class, LdapDirectory::class);
     }
 
     public function boot(): void
