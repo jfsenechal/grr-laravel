@@ -79,10 +79,10 @@ it('fails without deleting anything when ldap is unreachable', function (): void
     expect(DB::table('grr_utilisateurs')->count())->toBe(3);
 });
 
-it('is scheduled daily with force', function (): void {
+it('is scheduled weekly with force', function (): void {
     $event = collect(app(Illuminate\Console\Scheduling\Schedule::class)->events())
         ->first(fn (Illuminate\Console\Scheduling\Event $event): bool => str_contains((string) $event->command, 'app:remove-users-not-in-ldap --force'));
 
     expect($event)->not->toBeNull()
-        ->and($event->expression)->toBe('0 0 * * *');
+        ->and($event->expression)->toBe('0 0 * * 0');
 });

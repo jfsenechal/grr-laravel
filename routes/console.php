@@ -11,6 +11,6 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Schedule::command('app:remove-users-not-in-ldap --force')
-    ->daily()
+    ->weekly()
     ->withoutOverlapping()
     ->onOneServer();
